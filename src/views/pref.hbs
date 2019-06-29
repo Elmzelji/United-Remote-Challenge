@@ -1,0 +1,19 @@
+{{> header }}
+
+<div id="id">    
+    <div class="container">
+
+        {{#if errors}}
+            {{#each errors}}
+                <div class="alert alert-danger" role="alert">
+                    {{this.message}}
+                </div>
+            {{/each}}
+        {{/if}}
+
+        
+
+    </div>
+</div>
+
+{{> footer-end }}

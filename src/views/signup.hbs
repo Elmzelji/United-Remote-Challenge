@@ -1,0 +1,40 @@
+{{> header }}
+
+<div id="id">    
+    <div class="container">
+
+        {{#if errors}}
+            {{#each errors}}
+                <div class="alert alert-danger" role="alert">
+                    {{this.message}}
+                </div>
+            {{/each}}
+        {{/if}}
+
+        <form role="form" method="post" action="/auth/signup">
+			<fieldset>							
+				<h1 class="text-uppercase pull-center"> SIGN UP.</h1>	
+ 				<div class="form-group">
+					<input type="text" name="username" id="username" class="form-control input-lg" placeholder="Pick a nickname">
+				</div>
+                
+
+				<div class="form-group">
+					<input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address">
+				</div>
+				<div class="form-group">
+					<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Provide a secure password">
+				</div>
+				<div class="form-group">
+					<input type="password" name="password2" id="password2" class="form-control input-lg" placeholder="Retype your password">
+				</div>
+ 				<div>
+ 					<input type="submit" class="btn btn-md btn-primary mt-10" value="Register">
+ 				</div>
+			</fieldset>
+		</form>
+    </div>
+
+</div>
+
+{{> footer-end }}
