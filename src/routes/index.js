@@ -11,13 +11,16 @@ router.get('/', function(req, res, next) {
 			if (results.length > 0) {
         
         db.query('SELECT s.*, d.disliked_at, d.removed_at FROM shops s LEFT JOIN dislike d ON s.id=d.store LEFT JOIN shop_status ss ON s.id = ss.shop WHERE ss.`status` IS NULL OR ss.`status` = 0', function(error, shops, fields) {
-          var now = moment().format("YYYY-MM-DD HH:mm:ss");
+          var now = moment();
           var nearby = [];
           
           shops.forEach(shop => {
             if(shop.removed_at != null){
               var removed_date = moment(shop.removed_at);
-              if(now > removed_date){
+              console.log(now);
+
+              if(now > removed_date && moment(shop.removed_at).isValid()){
+                console.log("Correct");
                 nearby.push(shop);
               }
             }else{
