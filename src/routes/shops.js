@@ -55,17 +55,12 @@ router.get('/dislike/:id', (req, res, next) => {
                     if (results.length > 0) {
                         //Already Disliked
                         var now = moment().format("YYYY-MM-DD HH:mm:ss");
-                        var done_date = moment(results[0].removed_at);
-                        var newdone = moment().add(2, 'hours').format("YYYY-MM-DD HH:mm:ss");
+                        var done = moment().add(2, 'hours').format("YYYY-MM-DD HH:mm:ss");
 
-                        if(now > done_date) {
-
-                            db.query('UPDATE dislike SET disliked_at = ? AND removed_at = ? WHERE id = ?', [now, newdone, results[0].id], (err, results, fields) => {
-                                if(err) throw err;
-                                res.redirect('/');
-                            });
-
-                        }
+                        db.query('UPDATE dislike SET disliked_at = ? , removed_at = ? WHERE id = ?', [now, done, results[0].id], (err, results, fields) => {
+                            if(err) throw err;
+                            res.redirect('/');
+                        });
 
                         res.redirect('/');
                     }

@@ -17,10 +17,8 @@ router.get('/', function(req, res, next) {
           shops.forEach(shop => {
             if(shop.removed_at != null){
               var removed_date = moment(shop.removed_at);
-              console.log(now);
 
               if(now > removed_date && moment(shop.removed_at).isValid()){
-                console.log("Correct");
                 nearby.push(shop);
               }
             }else{
