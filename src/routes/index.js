@@ -26,7 +26,6 @@ router.get('/', function(req, res, next) {
             }
 
           });
-
           res.render('index', { title: 'Shop Directory', user: {id: results[0].id, username: results[0].username, email: results[0].email}, shops:nearby, date:now });
         })
 
