@@ -12,11 +12,21 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 
--- Creating structure for unitedremote
+-- Dumping database structure for unitedremote
 CREATE DATABASE IF NOT EXISTS `unitedremote` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `unitedremote`;
 
--- Creating table unitedremote.shops
+-- Dumping structure for table unitedremote.dislike
+CREATE TABLE IF NOT EXISTS `dislike` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `store` int(11) DEFAULT NULL,
+  `user` int(11) DEFAULT NULL,
+  `disliked_at` timestamp NULL DEFAULT NULL,
+  `removed_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- Dumping structure for table unitedremote.shops
 CREATE TABLE IF NOT EXISTS `shops` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(150) NOT NULL,
@@ -24,7 +34,8 @@ CREATE TABLE IF NOT EXISTS `shops` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
--- Addind Data to Shops
+-- Dumping data for table unitedremote.shops: ~0 rows (approximately)
+/*!40000 ALTER TABLE `shops` DISABLE KEYS */;
 INSERT INTO `shops` (`id`, `name`, `image_path`) VALUES
 	(1, 'Acima mall', '/shops/default.png'),
 	(2, 'Ikea', '/shops/default.png'),
@@ -34,18 +45,18 @@ INSERT INTO `shops` (`id`, `name`, `image_path`) VALUES
 	(6, 'United Remote', '/shops/default.png'),
 	(7, 'Fablab', '/shops/default.png'),
 	(8, '3D Cat', '/shops/default.png');
+/*!40000 ALTER TABLE `shops` ENABLE KEYS */;
 
--- Creating Table unitedremote.shop_status
+-- Dumping structure for table unitedremote.shop_status
 CREATE TABLE IF NOT EXISTS `shop_status` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `shop` int(11) NOT NULL DEFAULT '0',
   `user` int(11) NOT NULL DEFAULT '0',
   `status` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
-
--- Creating Table table unitedremote.users
+-- Dumping structure for table unitedremote.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(100) NOT NULL,
@@ -53,5 +64,4 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(60) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-
 
